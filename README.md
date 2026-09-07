@@ -1,1 +1,3 @@
-# Edith-2.0
+# EDITH
+
+Página oficial de EDITH

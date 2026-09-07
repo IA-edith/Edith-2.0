@@ -1,0 +1,246 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EDITH — Personal AI System</title><style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#02070c;color:#e9fbff;font-family:Arial,sans-serif}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(#65ddff18 1px,transparent 1px),linear-gradient(90deg,#65ddff18 1px,transparent 1px);background-size:55px 55px}nav{position:fixed;z-index:5;top:0;left:0;right:0;padding:18px 6%;display:flex;justify-content:space-between;background:#02070caa;backdrop-filter:blur(14px);border-bottom:1px solid #65ddff22}.logo{letter-spacing:5px;font-weight:800}.logo b{color:#65ddff}nav a{color:#a9c5ce;text-decoration:none;margin-left:24px;font-size:12px}.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:120px 7%;position:relative;overflow:hidden}.orb{position:absolute;width:560px;height:560px;border:1px solid #65ddff28;border-radius:50%;box-shadow:0 0 100px #65ddff12,inset 0 0 100px #65ddff0b}.orb:after{content:"";position:absolute;top:50%;left:0;width:9px;height:9px;background:#65ddff;border-radius:50%;box-shadow:0 0 25px #65ddff}.hero>div:last-child{position:relative}.tag,.k{color:#65ddff;letter-spacing:4px;font-size:11px}.hero h1{font-size:clamp(58px,10vw,125px);line-height:.85;margin:20px 0}.hero h1 span{color:#65ddff;text-shadow:0 0 30px #65ddff55}.hero p{max-width:720px;margin:auto;color:#9bb6bf;font-size:19px;line-height:1.7}.cta{margin-top:35px}.cta a{display:inline-block;padding:14px 23px;border-radius:30px;text-decoration:none;margin:5px;font-weight:bold}.primary{background:#65ddff;color:#021018}.secondary{border:1px solid #65ddff35;color:white}section{padding:100px 7%;border-top:1px solid #65ddff16}.head{max-width:760px;margin-bottom:45px}.head h2{font-size:clamp(38px,6vw,68px);margin:12px 0}.head p{color:#8faab3;line-height:1.7;font-size:17px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{padding:28px;min-height:190px;border:1px solid #65ddff25;border-radius:18px;background:linear-gradient(145deg,#0b1b28bb,#03090fbb);box-shadow:0 0 35px #65ddff0b}.card .icon{color:#65ddff;font-size:25px}.card h3{font-size:20px}.card p{color:#8faab3;line-height:1.65}.demo{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}.terminal{background:#010407;border:1px solid #65ddff30;border-radius:18px;padding:25px;font:14px monospace;box-shadow:0 0 50px #65ddff12}.terminal p{color:#b9d5dd}.terminal b{color:#65ddff}.answer{border-left:2px solid #65ddff;padding-left:15px}.modes{display:flex;flex-wrap:wrap;gap:10px}.mode{padding:10px 15px;border:1px solid #65ddff25;border-radius:30px;color:#b8d4dc}.final{text-align:center;min-height:65vh;display:grid;place-items:center;background:radial-gradient(circle,#65ddff18,transparent 55%)}.final h2{font-size:clamp(40px,7vw,80px);max-width:900px}.final p{color:#91aab3;font-size:18px}footer{padding:28px 7%;border-top:1px solid #65ddff18;color:#607b85;display:flex;justify-content:space-between;font-size:12px}@media(max-width:800px){nav a{display:none}.grid,.demo{grid-template-columns:1fr}.orb{width:380px;height:380px}}
+</style>
+<style id="download-cta-style">
+.hero-actions{display:flex;flex-direction:column;align-items:center;gap:14px}
+.hero-actions .cta{margin:0}
+.hero-actions .download{order:2}
+.hero-actions .primary{order:1}
+.hero-actions .cta:not(.primary):not(.download){order:3}
+@media(max-width:700px){
+  .hero-actions .cta{width:min(92vw,360px);box-sizing:border-box;text-align:center}
+}
+</style>
+
+<style id="edith-plans">
+.plans{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:34px;
+}
+.plan{
+  position:relative;
+  border:1px solid rgba(95,213,255,.18);
+  background:rgba(3,12,19,.62);
+  border-radius:26px;
+  padding:30px;
+  min-height:520px;
+  box-sizing:border-box;
+  overflow:hidden;
+  backdrop-filter:blur(10px);
+}
+.plan:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(145deg,rgba(78,211,255,.06),transparent 45%);
+  pointer-events:none;
+}
+.plan.featured{
+  border-color:rgba(95,213,255,.58);
+  box-shadow:0 0 40px rgba(45,194,255,.12);
+  transform:translateY(-8px);
+}
+.plan-tag{
+  letter-spacing:.22em;
+  font-size:12px;
+  color:#63dcff;
+  font-weight:700;
+}
+.plan h3{
+  font-size:30px;
+  margin:15px 0 10px;
+}
+.price{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  margin:10px 0 14px;
+}
+.price span{
+  font-size:38px;
+  font-weight:800;
+}
+.price small{
+  opacity:.65;
+}
+.plan-desc{
+  min-height:54px;
+  opacity:.72;
+  line-height:1.55;
+}
+.plan ul{
+  list-style:none;
+  padding:0;
+  margin:24px 0;
+}
+.plan li{
+  padding:10px 0;
+  border-bottom:1px solid rgba(160,220,240,.08);
+  line-height:1.4;
+}
+.plan li:before{
+  content:"✓";
+  color:#62ddff;
+  margin-right:10px;
+}
+.plan-foot{
+  position:absolute;
+  bottom:26px;
+  left:30px;
+  right:30px;
+  color:rgba(210,241,250,.58);
+  font-size:13px;
+}
+@media(max-width:900px){
+  .plans{grid-template-columns:1fr}
+  .plan.featured{transform:none}
+}
+</style>
+
+
+<style id="edith-plans-style">
+#planes{position:relative}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.plan{position:relative;padding:32px;border:1px solid rgba(91,215,255,.20);border-radius:24px;background:rgba(3,12,19,.72);box-shadow:inset 0 0 35px rgba(62,194,255,.025);transition:transform .25s ease,border-color .25s ease}
+.plan:hover{transform:translateY(-5px);border-color:rgba(91,215,255,.55)}
+.plan.featured{border-color:rgba(91,215,255,.65);box-shadow:0 0 35px rgba(62,194,255,.08),inset 0 0 40px rgba(62,194,255,.04)}
+.plan-tag{font-size:12px;letter-spacing:4px;color:#61dcff;margin-bottom:18px}
+.plan h3{font-size:29px;margin:0 0 12px}
+.price{font-size:58px;font-weight:800;letter-spacing:-2px;margin-bottom:8px}
+.price span{font-size:27px;vertical-align:top;letter-spacing:0}
+.price small{font-size:13px;letter-spacing:2px;font-weight:500;color:#9cb2bd}
+.plan-sub{min-height:46px;color:#9eb2bc;margin-bottom:22px}
+.plan ul{list-style:none;padding:0;margin:0 0 28px}
+.plan li{padding:11px 0;border-top:1px solid rgba(255,255,255,.08);color:#d8e6eb}
+.plan li::before{content:"✓";color:#61dcff;margin-right:10px}
+.plan-cta{display:block;text-align:center;padding:14px 18px;border:1px solid rgba(91,215,255,.35);border-radius:999px;color:#ecfbff;text-decoration:none;font-weight:800;letter-spacing:.5px}
+.plan.featured .plan-cta{background:#61d8fa;color:#031018;border-color:#61d8fa}
+.plan-note{margin-top:22px;color:#8299a4;font-size:13px;line-height:1.6}
+.plan-note strong{color:#a9c0ca}
+@media(max-width:900px){.plans{grid-template-columns:1fr}.plan{padding:26px}}
+</style>
+
+<style id="edith-payments-style">
+.payment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.payment-method{appearance:none;border:1px solid rgba(91,215,255,.20);border-radius:20px;background:rgba(3,12,19,.72);padding:25px;text-align:left;color:#eafaff;cursor:pointer;display:flex;flex-direction:column;gap:7px;transition:.25s}
+.payment-method:hover{transform:translateY(-4px);border-color:rgba(91,215,255,.6);box-shadow:0 0 28px rgba(62,194,255,.08)}
+.payment-logo{font-size:12px;letter-spacing:3px;color:#61dcff;font-weight:800}
+.payment-method strong{font-size:20px}
+.payment-method small{color:#91aab5}
+.payment-note{margin-top:18px;color:#8299a4;font-size:13px;line-height:1.65}
+.payment-note strong{color:#a9c0ca}
+.payment-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:22px}
+.payment-modal.open{display:flex}
+.payment-backdrop{position:absolute;inset:0;background:rgba(0,5,10,.82);backdrop-filter:blur(8px)}
+.payment-panel{position:relative;width:min(640px,94vw);padding:34px;border:1px solid rgba(91,215,255,.45);border-radius:26px;background:#06131b;box-shadow:0 0 70px rgba(62,194,255,.12)}
+.payment-close{position:absolute;right:16px;top:10px;border:0;background:none;color:#bfeaf7;font-size:32px;cursor:pointer}
+.payment-panel h3{font-size:32px;margin:10px 0}
+.payment-panel p{color:#9eb2bc;line-height:1.6}
+.checkout-plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.checkout-plan{padding:20px;border:1px solid rgba(91,215,255,.22);border-radius:18px;text-decoration:none;color:#effcff;display:flex;flex-direction:column;gap:8px}
+.checkout-plan:hover{border-color:#61dcff}
+.checkout-plan span{color:#61dcff}
+.checkout-status{font-size:12px!important;margin-top:20px}
+@media(max-width:800px){.payment-grid{grid-template-columns:1fr}.checkout-plan-grid{grid-template-columns:1fr}}
+</style>
+
+<style id="edith-billing-style">
+.billing-switch{display:flex;align-items:center;justify-content:center;gap:10px;margin:28px auto 6px;flex-wrap:wrap}
+.billing-option{border:1px solid rgba(91,215,255,.25);background:rgba(3,12,19,.7);color:#b9d5df;padding:11px 20px;border-radius:999px;font-weight:800;letter-spacing:1px;cursor:pointer}
+.billing-option.active{background:#61d8fa;color:#031018;border-color:#61d8fa}
+.save-badge{font-size:11px;letter-spacing:1.5px;color:#61dcff;border:1px solid rgba(91,215,255,.3);border-radius:999px;padding:9px 12px}
+.billing-label{font-size:11px;letter-spacing:2px;color:#61dcff;margin:0 0 14px;font-weight:800}
+.price b{font-weight:800}
+</style>
+
+<style id="edith-real-checkout-style">
+.payment-panel-wide{width:min(760px,95vw)}
+.payment-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.payment-choice{appearance:none;border:1px solid rgba(91,215,255,.22);border-radius:18px;background:rgba(3,12,19,.75);padding:20px;text-align:left;color:#effcff;cursor:pointer;display:grid;grid-template-columns:46px 1fr;column-gap:13px;align-items:center;transition:.2s}
+.payment-choice:hover,.payment-choice.active{border-color:#61dcff;box-shadow:0 0 24px rgba(62,194,255,.08)}
+.payment-choice-mark{grid-row:span 2;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(97,220,255,.10);color:#61dcff;font-weight:900}
+.payment-choice strong{font-size:18px}
+.payment-choice small{color:#91aab5;margin-top:4px}
+.paypal-checkout-box,.card-checkout-box{border:1px solid rgba(91,215,255,.13);border-radius:18px;padding:20px;background:rgba(0,7,12,.45)}
+.checkout-summary{display:flex;justify-content:space-between;gap:15px;align-items:center;padding-bottom:15px;margin-bottom:15px;border-bottom:1px solid rgba(255,255,255,.08)}
+.checkout-summary span{color:#819aa5;font-size:13px}
+.checkout-summary strong{color:#ecfbff}
+.card-placeholder{text-align:center;padding:30px 12px;border:1px dashed rgba(91,215,255,.25);border-radius:15px}
+.card-icon{font-size:12px;letter-spacing:3px;color:#61dcff;font-weight:900}
+.card-placeholder h4{font-size:21px;margin:10px 0}
+.card-placeholder p{color:#9eb2bc;line-height:1.5}
+.card-placeholder span{font-size:12px;letter-spacing:1px;color:#61dcff}
+.checkout-help{font-size:12px!important;color:#7e97a2!important;line-height:1.55}
+@media(max-width:650px){.payment-choice-grid{grid-template-columns:1fr}.checkout-summary{flex-direction:column;align-items:flex-start}}
+</style>
+
+<style id="edith-nequi-checkout-style">
+.payment-method-info{cursor:default!important;opacity:.9}
+.nequi-checkout-box{border:1px solid rgba(91,215,255,.15);border-radius:18px;padding:20px;background:rgba(0,7,12,.45)}
+.nequi-status-card{display:flex;gap:14px;align-items:center;padding:18px;border:1px solid rgba(91,215,255,.18);border-radius:16px;background:rgba(3,12,19,.55)}
+.nequi-mark{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(97,220,255,.11);color:#61dcff;font-weight:900;letter-spacing:1px}
+.nequi-status-card h4{margin:0 0 5px;font-size:19px}
+.nequi-status-card p{margin:0;color:#91aab5;font-size:13px}
+.nequi-pay-link{display:block;text-align:center;margin-top:18px;padding:15px 18px;border-radius:999px;background:#61d8fa;color:#031018;text-decoration:none;font-weight:900;letter-spacing:.5px}
+.nequi-pending{margin-top:18px;padding:18px;border:1px dashed rgba(91,215,255,.28);border-radius:15px}
+.nequi-pending strong{color:#61dcff}
+.nequi-pending p{color:#9eb2bc;line-height:1.5;margin:8px 0}
+.nequi-pending span{font-size:11px;color:#718a95;font-family:monospace;word-break:break-all}
+.checkout-recurring{margin-top:14px;padding:16px;border:1px solid rgba(91,215,255,.10);border-radius:15px;background:rgba(3,12,19,.35)}
+.recurring-title{font-size:11px;letter-spacing:2px;color:#61dcff;font-weight:900;margin-bottom:7px}
+.checkout-recurring p{font-size:12px!important;color:#819aa5!important;line-height:1.55;margin:0}
+</style>
+
+<style id="edith-editions-responsive">
+@media(max-width:800px){#base .plans{grid-template-columns:1fr!important}#base .plans>div{min-width:0!important;padding:4px 0}}
+</style>
+</head><body>
+<nav><div class="logo"><b>EDITH</b> // AI</div><div><a href="#capacidades">CAPACIDADES</a><a href="#premium">PREMIUM</a><a href="#descarga">DESCARGA</a><a href="#voz">VOZ</a><a href="#funciones">FUNCIONES</a></div></nav>
+<header class="hero"><div class="orb"></div><div><div class="tag">NEXT-GENERATION PERSONAL INTELLIGENCE</div><h1>Tu voz.<br><span>Tu sistema.</span></h1><p>EDITH es una IA personal diseñada para conversar, recordar, analizar, ver, planificar y ayudarte a ejecutar acciones mediante lenguaje natural.</p><div class="cta"><a class="primary" href="#capacidades">DESCUBRIR EDITH</a><a class="secondary" href="#voz">VER CÓMO FUNCIONA</a></div></div></header>
+<section id="capacidades"><div class="head"><div class="k">01 // CORE INTELLIGENCE</div><h2>Más que un asistente.</h2><p>Una arquitectura que reúne inteligencia, memoria, visión, herramientas y automatización en una sola experiencia.</p></div><div class="grid">
+<div class="card"><div class="icon">◈</div><h3>Inteligencia</h3><p>Comprende lenguaje natural, analiza problemas y selecciona herramientas para resolver peticiones.</p></div>
+<div class="card"><div class="icon">◎</div><h3>Memoria</h3><p>Guarda información útil, preferencias, tareas y contexto para mantener continuidad.</p></div>
+<div class="card"><div class="icon">◉</div><h3>Visión</h3><p>Cámara, reconocimiento de objetos, OCR y análisis visual.</p></div>
+<div class="card"><div class="icon">⌁</div><h3>Automatización</h3><p>Recordatorios, planificación, tareas recurrentes e integraciones compatibles.</p></div>
+<div class="card"><div class="icon">⌘</div><h3>Herramientas</h3><p>Web, archivos, ubicación y funciones del sistema mediante acciones controladas.</p></div>
+<div class="card"><div class="icon">△</div><h3>Seguridad</h3><p>Permisos, listas de acciones y registros para reducir ejecuciones no deseadas.</p></div>
+</div></section>
+
+<section id="premium">
+  <div class="head">
+    <div class="k">03 // EDITH PREMIUM</div>
+    <h2>EDITH Premium.</h2>
+    <p>El nivel completo de EDITH: un sistema pensado para acceder a las funciones avanzadas de operación, planificación, navegación y progreso.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="icon">01</div><h3>Misiones</h3><p>Consulta, organiza y sigue tus misiones y objetivos directamente con la voz.</p></div>
+    <div class="card"><div class="icon">02</div><h3>Recompensas</h3><p>Sistema de progreso para registrar recompensas y avances obtenidos.</p></div>
+    <div class="card"><div class="icon">03</div><h3>GPS Táctico</h3><p>Acceso al módulo de ubicación para consultar posición, mapa y datos del entorno.</p></div>
+    <div class="card"><div class="icon">04</div><h3>Estadísticas</h3><p>Visualiza progreso, actividad y estado del sistema de EDITH.</p></div>
+    <div class="card"><div class="icon">05</div><h3>Habilidades</h3><p>Accede a habilidades y módulos avanzados que amplían las capacidades de EDITH.</p></div>
+    <div class="card"><div class="icon">06</div><h3>Herramientas</h3><p>Funciones avanzadas para planificación, archivos, visión, automatización e integraciones.</p></div>
+  </div>
+</section>
+
+<section id="descarga">
+  <div class="head">
+    <div class="k">04 // EDITH DOWNLOAD</div>
+    <h2>Descarga EDITH.</h2>
+    <p>Instala la versión disponible y prepárate para la evolución del sistema.</p>
+  </div>
+  <div style="display:flex;justify-content:center;margin-top:30px">
+    <a class="primary" href="EDITH.zip" download>DESCARGAR EDITH</a>
+  </div>
+</section>
+
+<section id="voz"><div class="demo"><div><div class="k">05 // VOICE FIRST</div><h2>Sin botones.<br>Solo habla.</h2><p style="color:#91aab3;line-height:1.8">La experiencia de EDITH está pensada alrededor de la voz: pedir, preguntar, activar y consultar sin depender de menús.</p></div><div class="terminal"><p><b>USUARIO:</b> EDITH, ¿qué tengo pendiente hoy?</p><div class="answer">He encontrado tus tareas y recordatorios. Te preparo un resumen.</div><p><b>USUARIO:</b> Recuérdame esto mañana a las nueve.</p><div class="answer">Recordatorio creado para mañana a las 09:00.</div><p><b>USUARIO:</b> Analiza lo que ves.</p><div class="answer">Activando análisis visual.</div></div></div></section>
+
+<section id="funciones"><div class="head"><div class="k">06 // TECHNICAL & ACADEMIC CORE</div><h2>Funciones que piensan contigo.</h2><p>EDITH reemplaza los antiguos modos por capacidades técnicas y académicas especializadas. Todas pueden activarse mediante voz y combinarse según la tarea.</p></div><div class="modes"><span class="mode">INVESTIGACIÓN</span><span class="mode">ANÁLISIS</span><span class="mode">MATEMÁTICA</span><span class="mode">PROGRAMACIÓN</span><span class="mode">SIMULACIÓN</span><span class="mode">VISIÓN</span><span class="mode">INGENIERÍA</span><span class="mode">CIENCIA</span><span class="mode">ACADÉMICO</span><span class="mode">VERIFICACIÓN</span></div><div class="grid" style="margin-top:28px"><div class="card"><div class="icon">01</div><h3>Investigación</h3><p>Búsqueda, recopilación, comparación y síntesis de información científica y técnica.</p></div><div class="card"><div class="icon">02</div><h3>Análisis</h3><p>Descompone problemas, datos, textos y sistemas para encontrar patrones y conclusiones.</p></div><div class="card"><div class="icon">03</div><h3>Matemática</h3><p>Álgebra, cálculo, estadística, ecuaciones, razonamiento cuantitativo y modelamiento.</p></div><div class="card"><div class="icon">04</div><h3>Programación</h3><p>Generación, explicación, depuración, revisión y pruebas de código y proyectos.</p></div><div class="card"><div class="icon">05</div><h3>Simulación</h3><p>Construcción de escenarios y modelos para estudiar comportamientos y resultados.</p></div><div class="card"><div class="icon">06</div><h3>Visión</h3><p>Interpretación de imágenes, documentos, objetos y elementos del entorno mediante visión artificial.</p></div><div class="card"><div class="icon">07</div><h3>Ingeniería</h3><p>Diseño, diagnóstico, optimización y resolución de problemas de sistemas técnicos.</p></div><div class="card"><div class="icon">08</div><h3>Ciencia</h3><p>Explicación de fenómenos, formulación de hipótesis y razonamiento basado en evidencia.</p></div><div class="card"><div class="icon">09</div><h3>Académico</h3><p>Estudio guiado, ejercicios, resúmenes, preparación académica y aprendizaje personalizado.</p></div><div class="card"><div class="icon">10</div><h3>Verificación</h3><p>Comprueba cálculos, resultados, fuentes y posibles contradicciones antes de concluir.</p></div></div></section>
+<section><div class="head"><div class="k">07 // EXTENSIBLE INTELLIGENCE</div><h2>Una plataforma técnica que evoluciona.</h2></div><div class="grid"><div class="card"><h3>Skills y plugins</h3><p>Nuevas capacidades pueden añadirse como módulos independientes.</p></div><div class="card"><h3>Multiagente</h3><p>Arquitectura preparada para investigación, programación, análisis, estudio y operación.</p></div><div class="card"><h3>Integraciones</h3><p>Servicios externos y hardware compatible con permisos controlados.</p></div></div></section>
+<section class="final"><div><div class="k">08 // THE FUTURE IS VOICE</div><h2>La tecnología no debería obligarte a buscar un botón.</h2><p>Deja que EDITH entienda lo que necesitas.</p><p style="color:#65ddff;font-family:monospace">“EDITH, activa el sistema.”</p></div></section>
+<footer><span>EDITH // PERSONAL AI SYSTEM</span><span>© 2026 — Proyecto EDITH</span></footer>
+
+
+</body></html>
